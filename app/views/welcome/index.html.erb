@@ -1,0 +1,132 @@
+<html>
+
+<head>
+  <title>Contact Form Tutorial by Bootstrapious.com</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <% stylesheet_link_tag 'bootstrap', media: 'print, screen' %>
+  <% stylesheet_link_tag 'fonts', media: 'print, screen' %>
+  <% stylesheet_link_tag 'custom', media: 'print, screen' %>
+
+</head>
+
+<body >
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-xl-8 offset-xl-2 py-5">
+
+      <h1>
+        <a href="http://www.cognizant.com">Cognizant</a>
+      </h1>
+
+      <p class="lead">Source Export</p>
+
+      <%= form_tag(script_runner_create_path,:id=>"contact-form", :method => :post) do %>
+
+
+        <div class="messages"></div>
+
+        <div class="controls">
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_need">Script Should Run on *</label>
+                <%= select_tag(:scripting, options_for_select([ [ "SAP Application",1], ["Database",1],[ "Both",3]] ), {:class => 'form-control'}) %>
+            </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_lastname">Enter SAP SID *</label>
+                <%= text_field_tag(:sapsid,'', {:class => 'form-control'})%>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_name">Enter HANA DB SID *</label>
+                <%= text_field_tag(:dbsid,'', {:class => 'form-control'})%>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_lastname">Enter Instance number for ASCS *</label>
+                <%= text_field_tag(:inascs,'', {:class => 'form-control'})%>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_name">Enter DAA Instance SID *</label>
+                <%= text_field_tag(:daainsid,'', {:class => 'form-control'})%>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_lastname">Enter Database Instance number  *</label>
+                <%= text_field_tag(:dbin,'', {:class => 'form-control'})%>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_name">Location of source backup file for SAP *</label>
+                <%= text_field_tag(:lcnsap,'', {:class => 'form-control'})%>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_lastname">Location of source backup file for Database  *</label>
+                <%= text_field_tag(:lcndb,'', {:class => 'form-control'})%>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="form_lastname">Is server Host ASCS Instance  *</label>
+                <div class="form-control">
+                <%= radio_button_tag(:hostascs, 0) %>
+                <%= label_tag(:host_ascs, "Yes") %>
+                <%= radio_button_tag(:hostascs, 1) %>
+                <%= label_tag(:host_ascs, "No") %>
+                </div>
+                  <div class="help-block with-errors"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <input type="submit" class="btn btn-success btn-send" value="Send message">
+            </div>
+          </div>
+        </div>
+
+
+     <%end %>
+
+  </div>
+  <!-- /.8 -->
+
+</div>
+<!-- /.row-->
+
+</div>
+<!-- /.container-->
+<%= javascript_include_tag "contact" %>
+</body>
+
+</html>
